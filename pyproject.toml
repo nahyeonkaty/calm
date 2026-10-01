@@ -1,0 +1,28 @@
+[project]
+name = "calm"
+version = "0.1.0"
+description = "Keep It CALM: Analyzing the Limits of Global Unsafety in Text-to-Image Generation"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    # generation
+    "torch>=2.5.1",
+    "diffusers>=0.29.0",
+    "transformers>=4.57.1",
+    "accelerate>=1.12.0",
+    "safetensors>=0.7.0",
+
+    # evaluation
+    "numpy",
+    "pandas>=2.3.3",
+    "pillow",
+    "onnxruntime-gpu>=1.24.3",
+    "torchvision>=0.20.1",
+    "scipy",
+    "scikit-image",
+    "lpips",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
