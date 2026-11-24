@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+
+# generated images / metrics
+outputs*/
+
+# downloaded assets
+data/coco_10k/
+pretrained/
+*.onnx
+

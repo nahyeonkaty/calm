@@ -1,0 +1,35 @@
+[project]
+name = "calm"
+version = "0.1.0"
+description = "Keep It CALM: Analyzing the Limits of Global Unsafety in Text-to-Image Generation"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+dependencies = [
+    # generation (calm.py)
+    "torch==2.6.0",
+    "diffusers==0.29.0",
+    "transformers==4.57.1",
+    "accelerate==1.13.0",
+    "safetensors==0.7.0",
+    "huggingface-hub==0.36.2",
+
+    # evaluation (evaluate.py)
+    "numpy",
+    "pillow",
+    "onnxruntime-gpu>=1.20; sys_platform != 'darwin'",
+    "onnxruntime>=1.20; sys_platform == 'darwin'",
+]
+
+# scripts are run in place (uv run python calm.py ...); nothing to build or install
+[tool.uv]
+package = false
+
+# CUDA 11.8 build of torch (runs on NVIDIA drivers >= 450.80)
+[[tool.uv.index]]
+name = "pytorch-cu118"
+url = "https://download.pytorch.org/whl/cu118"
+explicit = true
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu118", marker = "sys_platform == 'linux' or sys_platform == 'win32'" }]
